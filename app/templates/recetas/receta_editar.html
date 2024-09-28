@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Editar receta{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-6">
+        <div class="card p-5">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-5">Editar receta</h2>
+
+                <!-- Formulario para editar una receta -->
+                <form action="{{ url_for('receta_editar') }}" method="post">
+                    <!-- ID de la receta -->
+                    <input type="hidden" value="{{ receta.id_receta }}" name="id_receta">
+
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre de la receta</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ receta.nombre }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción corta</label>
+                        <input type="text" class="form-control" id="descripcion" name="descripcion"
+                               value="{{ receta.descripcion }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="instrucciones" class="form-label">Instrucciones</label>
+                        <textarea class="form-control" id="instrucciones" name="instrucciones" rows="5">{{ receta.instrucciones }}</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha preparación</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha" value="{{ receta.fecha }}">
+                    </div>
+
+                    <button class="btn btn-success mt-4" type="submit">Editar receta</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Dashboard</h2>
+
+<p>Bienvenido {{ usuario.nombre }}!</p>
+
+<div>
+    <a href="{{ url_for('receta_formulario') }}" class="btn btn-success">Crear receta</a>
+    <a href="{{ url_for('cerrar_sesion') }}" class="btn btn-primary">Cerrar sesión</a>
+</div>
+
+<div class="row mt-5">
+    <!-- Tabla que muestra las recetas -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for receta in recetas %}
+        <tr>
+            <td>{{ receta.nombre }}</td>
+            <td>{{ receta.descripcion }}</td>
+            <td>{{ receta.usuario_id }}</td>
+            <td>
+                <a href="{{ url_for('receta_detalle', id_receta=receta.id_receta) }}">Ver</a>
+                <a href="{{ url_for('receta_editar_formulario', id_receta=receta.id_receta) }}">Editar</a>
+                <a href="#">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

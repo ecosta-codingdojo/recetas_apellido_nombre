@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Detalle receta{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-6">
+        <div class="card p-5">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-5">Detalle receta</h2>
+
+                <!-- Detalle de la receta -->
+                <div class="mb-3">
+                    <p>Usuario: {{ receta.usuario_id }}</p>
+                </div>
+                <div class="mb-3">
+                    <p>Nombre: {{ receta.nombre }}</p>
+                </div>
+                <div class="mb-3">
+                    <p>Descripción: {{ receta.descripcion }}</p>
+                </div>
+                <div class="mb 3">
+                    <h5>Instrucciones: </h5>
+                    <p>{{ receta.instrucciones }}</p>
+                </div>
+                <div class="mb-3">
+                    <p>Fecha de preparación: {{ receta.fecha }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

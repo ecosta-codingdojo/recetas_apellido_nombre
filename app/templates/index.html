@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Registro/Inicio sesión{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- 6 Columnas -->
+    <div class="col-6">
+        <!-- Tarjeta de "Registro" -->
+        <div class="card p-5">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-5">Registro</h2>
+                <!-- Formulario de "Registro" -->
+                <form action="{{ url_for('registrar_usuario') }}" method="post">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correo_electronico" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="correo_electronico"
+                               name="correo_electronico" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contrasena" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmar_contrasena" class="form-label">Confirmar contraseña</label>
+                        <input type="password" class="form-control" id="confirmar_contrasena"
+                               name="confirmar_contrasena" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-4">Registrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6 Columnas -->
+    <div class="col-6">
+        <!-- Tarjeta de "Inicio de sesión" -->
+        <div class="card p-5">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-5">Inicio de sesión</h2>
+                <!-- Formulario de "Inicio de sesión" -->
+                <form action="{{ url_for('iniciar_sesion') }}" method="post">
+                    <div class="mb-3">
+                        <label for="correo_electronico" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="correo_electronico"
+                               name="correo_electronico" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contrasena" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 mt-4">Iniciar sesión</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

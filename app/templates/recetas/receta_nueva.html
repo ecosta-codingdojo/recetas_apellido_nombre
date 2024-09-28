@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Nueva receta{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-6">
+        <div class="card p-5">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-5">Nueva receta</h2>
+
+                <!-- Formulario para crear una nueva receta -->
+                <form action="{{ url_for('receta_crear') }}" method="post">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre de la receta</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción corta</label>
+                        <input type="text" class="form-control" id="descripcion" name="descripcion">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="instrucciones" class="form-label">Instrucciones</label>
+                        <textarea class="form-control" id="instrucciones" name="instrucciones" rows="5"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha preparación</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha">
+                    </div>
+
+                    <button class="btn btn-success mt-4" type="submit">Agregar receta</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
