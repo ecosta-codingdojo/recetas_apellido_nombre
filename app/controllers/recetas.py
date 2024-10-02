@@ -25,6 +25,10 @@ def receta_formulario():
 def receta_crear():
     """Controlador para crear una nueva receta."""
 
+    # Proteger la ruta. Solo pueden acceder usuarios autenticados.
+    if "id_usuario" not in session:
+        return redirect(url_for("index"))
+
     # Datos del formulario
     data = {
         "nombre": request.form["nombre"],
@@ -45,6 +49,10 @@ def receta_crear():
 def receta_detalle(id_receta):
     """Detalle de una receta por su ID."""
 
+    # Proteger la ruta. Solo pueden acceder usuarios autenticados.
+    if "id_usuario" not in session:
+        return redirect(url_for("index"))
+
     # El ID de la receta se recibe como parámetro en la URL
     data = {"id_receta": id_receta}
 
@@ -60,6 +68,10 @@ def receta_detalle(id_receta):
 @app.route("/recetas/editar/<int:id_receta>/", methods=["GET"])
 def receta_editar_formulario(id_receta):
     """Formulario para editar una receta."""
+
+    # Proteger la ruta. Solo pueden acceder usuarios autenticados.
+    if "id_usuario" not in session:
+        return redirect(url_for("index"))
 
     # El ID de la receta se recibe como parámetro en la URL
     data = {"id_receta": id_receta}
@@ -77,6 +89,10 @@ def receta_editar_formulario(id_receta):
 def receta_editar():
     """Controlador para editar una receta."""
 
+    # Proteger la ruta. Solo pueden acceder usuarios autenticados.
+    if "id_usuario" not in session:
+        return redirect(url_for("index"))
+
     # Datos del formulario
     data = {
         "id_receta": request.form["id_receta"],
@@ -91,3 +107,24 @@ def receta_editar():
 
     # Luego de editar la receta, redirigimos al dashboard
     return redirect(url_for("dashboard"))
+
+
+@app.route("/recetas/eliminar/<int:id_receta>/", methods=["GET"])
+def receta_eliminar(id_receta):
+    """Controlador para eliminar una receta."""
+
+    # Proteger la ruta. Solo pueden acceder usuarios autenticados.
+    if "id_usuario" not in session:
+        return redirect(url_for("index"))
+
+    # El ID de la receta se recibe como parámetro en la URL
+    data = {"id_receta": id_receta}
+
+    # Eliminar la receta
+    Receta.eliminar_receta(data)
+
+    # Luego de eliminar la receta, redirigimos al dashboard
+    return redirect(url_for("dashboard"))
+
+
+

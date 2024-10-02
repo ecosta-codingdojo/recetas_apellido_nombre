@@ -31,8 +31,10 @@
             <td>{{ receta.usuario_id }}</td>
             <td>
                 <a href="{{ url_for('receta_detalle', id_receta=receta.id_receta) }}">Ver</a>
+                {% if receta.usuario_id == session.id_usuario %}
                 <a href="{{ url_for('receta_editar_formulario', id_receta=receta.id_receta) }}">Editar</a>
-                <a href="#">Eliminar</a>
+                <a href="{{ url_for('receta_eliminar', id_receta=receta.id_receta) }}">Eliminar</a>
+                {% endif %}
             </td>
         </tr>
         {% endfor %}

@@ -62,3 +62,14 @@ class Receta:
         """
         resultado = connect_to_mysql().query_db(query, data)
         return resultado
+
+    @classmethod
+    def eliminar_receta(cls, data):
+        """Método para eliminar una receta por su ID."""
+
+        query = """
+            DELETE FROM recetas
+            WHERE id_receta = %(id_receta)s;
+        """
+        resultado = connect_to_mysql().query_db(query, data)
+        return resultado
